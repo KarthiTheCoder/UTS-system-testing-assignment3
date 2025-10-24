@@ -65,7 +65,7 @@ test('Change telephone number only on Edit Account', async t => {
 
   await t.takeScreenshot({ path: 'edit-phone-success.png', fullPage: true });
 
-  // --- revert phone number back
+  // revert phone number back
   await t
     .navigateTo(`${BASE}/index.php?route=account/edit`)
     .selectText(telephoneField).pressKey('delete')
@@ -76,7 +76,7 @@ test('Change telephone number only on Edit Account', async t => {
   await t.takeScreenshot({ path: 'edit-phone-reverted.png', fullPage: true });
 });
 
-// Optional negative case (extra marks): blank phone should trigger validation
+//  negative case where blank phone should trigger validation
 test('Edit Account shows validation when telephone is empty', async t => {
   await t.maximizeWindow();
 
