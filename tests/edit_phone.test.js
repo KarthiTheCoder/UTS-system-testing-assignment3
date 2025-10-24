@@ -3,7 +3,7 @@ import { Selector } from 'testcafe';
 const BASE = 'https://ecommerce-playground.lambdatest.io';
 const PASSWORD = 'Test@123';
 
-// --- helpers ---
+
 function uniqueEmail(base = 'karthigeyan', domain = 'example.com') {
   return `${base}.${Date.now()}@${domain}`;
 }
@@ -37,11 +37,11 @@ fixture`Edit Account - Change Telephone`
 test('Change telephone number only on Edit Account', async t => {
   await t.maximizeWindow();
 
-  // 1) Create a fresh test account so we don’t touch any real data
+  // 1) Creates a fresh test account so we will not touch any real data
   const email = uniqueEmail();
   await registerNewUser(t, email, PASSWORD);
 
-  // 2) Go to Edit Account page
+  // 2) Goes to Edit Account page
   await t.navigateTo(`${BASE}/index.php?route=account/edit`);
 
   const telephoneField = Selector('#input-telephone');
@@ -52,7 +52,7 @@ test('Change telephone number only on Edit Account', async t => {
   const originalPhone  = await telephoneField.value;
   const newPhone       = randomAuMobile();
 
-  // 3) Change only the telephone field
+  // 3) Changes only the telephone field
   await t
     .selectText(telephoneField).pressKey('delete')     // clear safely
     .typeText(telephoneField, newPhone)
@@ -65,7 +65,7 @@ test('Change telephone number only on Edit Account', async t => {
 
   await t.takeScreenshot({ path: 'edit-phone-success.png', fullPage: true });
 
-  // --- Optional cleanup: revert phone number back
+  // --- revert phone number back
   await t
     .navigateTo(`${BASE}/index.php?route=account/edit`)
     .selectText(telephoneField).pressKey('delete')
@@ -92,7 +92,7 @@ test('Edit Account shows validation when telephone is empty', async t => {
 
   await t
     .selectText(telephoneField).pressKey('delete')
-  // some sites need at least one blur before showing error; clicking Continue is fine
+  
     .click(continueBtn)
     .expect(anyError.exists)
     .ok('Expected validation error not shown for empty telephone');
