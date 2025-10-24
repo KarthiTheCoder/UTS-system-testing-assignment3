@@ -4,12 +4,12 @@ const BASE = 'https://ecommerce-playground.lambdatest.io';
 const LOGIN_URL = `${BASE}/index.php?route=account/login`;
 const PASSWORD_URL = `${BASE}/index.php?route=account/password`;
 
-// Use your dummy account
+// Using my dummy account
 const EMAIL             = 'karthigeyan@gmail.com';
 const ORIGINAL_PASSWORD = 'Test@123';
 const NEW_PASSWORD      = 'NewTest@123';  // keep simple and valid; we’ll revert in same test
 
-// ------- page models -------
+
 const LoginPage = {
   email: Selector('#input-email'),
   password: Selector('#input-password'),
@@ -31,7 +31,7 @@ const AccountPages = {
   logoutHeader: Selector('h1, h2').withText('Account Logout')
 };
 
-// ------- helpers -------
+
 async function login(t, email, password) {
   await t
     .navigateTo(LOGIN_URL)
@@ -57,7 +57,7 @@ async function logout(t) {
   await t.expect(AccountPages.logoutHeader.exists).ok('Logout page not shown');
 }
 
-// ------- tests -------
+// Tests:
 fixture`Change Password`.page(LOGIN_URL);
 
 test('Change password, verify by re-login, then revert', async t => {
