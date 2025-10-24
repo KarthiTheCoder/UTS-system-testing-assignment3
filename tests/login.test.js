@@ -3,7 +3,7 @@ import { Selector } from 'testcafe';
 const BASE_URL = 'https://ecommerce-playground.lambdatest.io';
 const PASSWORD = 'Test@123';
 
-// safely register the user if not already registered ---
+// safely register the user if not already registered
 async function safeRegister(t, email, password) {
     await t.navigateTo(`${BASE_URL}/index.php?route=account/register`);
 
@@ -27,7 +27,7 @@ async function safeRegister(t, email, password) {
         .click(privacyLabel)
         .click(continueBtn);
 
-    // If email already registered, ignores and proceed
+    // If email already registered, ignore and proceed
     if (await warningMsg.exists) {
         console.log('Email already registered — skipping registration.');
     } else {
