@@ -12,7 +12,7 @@ test('Register a new user successfully', async t => {
     const telephone       = Selector('#input-telephone');
     const password        = Selector('#input-password');
     const confirmPassword = Selector('#input-confirm');
-    const privacyLabel    = Selector('label[for="input-agree"]');  // ✅ new label selector
+    const privacyLabel    = Selector('label[for="input-agree"]');  
     const continueBtn     = Selector('input[value="Continue"]');
 
     await t
@@ -22,7 +22,7 @@ test('Register a new user successfully', async t => {
         .typeText(telephone, '0400123456')
         .typeText(password, 'Test@123')
         .typeText(confirmPassword, 'Test@123')
-        .click(privacyLabel)   // ✅ fixed variable name here
+        .click(privacyLabel)   
         .click(continueBtn);
 
     const successMessage = Selector('h1').withText('Your Account Has Been Created!');
