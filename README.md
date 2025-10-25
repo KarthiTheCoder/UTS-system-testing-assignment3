@@ -3,7 +3,7 @@ Automated TestCafe system tests for LambdaTest E-commerce Playground
 # System Testing & Quality Assurance – Assignment 3
 
 **Student:** Karthigeyan Sekar  
-**Subject:** 31257 System Testing & Quality Assurance  
+**Subject:** System Testing & Quality Assurance  
 **University:** University of Technology Sydney  
 **Framework:** TestCafe (JavaScript)
 
